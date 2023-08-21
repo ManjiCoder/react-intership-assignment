@@ -1,8 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Signup from "./pages/Signup";
-import IsUser from "./Routes/IsUser";
 
 export default function App() {
   return (
@@ -17,4 +16,11 @@ export default function App() {
       </Routes>
     </BrowserRouter>
   );
+}
+
+function IsUser(): JSX.Element {
+  if (localStorage.getItem("user")) {
+    return <Outlet />;
+  }
+  return <Signup />;
 }
