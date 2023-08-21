@@ -10,7 +10,14 @@ export default function Home() {
     });
 
   return (
-    <Container sx={{ paddingY: "5rem" }}>
+    <Container
+      sx={{
+        paddingY: "5rem",
+        display: "flex",
+        flexDirection: "column",
+        gap: "7rem",
+      }}
+    >
       <Table />
       <DepartmentList />
     </Container>

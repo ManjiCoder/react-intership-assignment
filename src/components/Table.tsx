@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
@@ -20,20 +20,20 @@ export default function Table() {
         "https://jsonplaceholder.typicode.com/posts"
       );
       setUsers(data);
-      // console.table(data);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Error fetching data:", error);
     }
   };
+
   useEffect(() => {
     getUsers();
   }, []);
 
   return (
-    <Container>
+    <Box sx={{ height: 640, width: "100%" }}>
       <h1>Table</h1>
-      <DataGrid rows={users} columns={columns} />
-    </Container>
+      <DataGrid rows={users} columns={columns} autoPageSize />
+    </Box>
   );
 }

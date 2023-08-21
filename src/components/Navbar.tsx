@@ -14,15 +14,11 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Avatar, Menu, MenuItem, Tooltip } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const settings = ["Profile", "Account", "Logout"];
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
 }
 
@@ -112,7 +108,7 @@ export default function Navbar(props: Props) {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            {localStorage.getItem("user") ? (
+            {localStorage.getItem("user") && (
               <React.Fragment>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -148,13 +144,6 @@ export default function Navbar(props: Props) {
                   ))}
                 </Menu>
               </React.Fragment>
-            ) : (
-              <Button
-                color="inherit"
-                sx={{ listStyle: "none", textDecoration: "none" }}
-              >
-                <Link to="/sign-up">SignUp</Link>
-              </Button>
             )}
           </Box>
         </Toolbar>
