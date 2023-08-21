@@ -46,10 +46,10 @@ export default function BasicAccordion() {
     // For Adding Checked Item
     else {
       newSelected.push(item);
-      const a = JSON.parse(JSON.stringify(subDept));
-      const b = JSON.parse(JSON.stringify(newSelected));
-
-      if (a.sort().join("") === b.sort().join("")) {
+      const allChecked: boolean[] = subDept.map((value) =>
+        newSelected.includes(value)
+      );
+      if (!allChecked.includes(false)) {
         newSelected.push(department);
       }
     }
@@ -60,7 +60,6 @@ export default function BasicAccordion() {
   const handleToggleDept = (item: string, arr: string[]) => {
     let newSelected: string[] = [...selectedItems];
     // For Removing Checked Item
-    console.log(newSelected);
     if (newSelected.includes(item)) {
       newSelected = newSelected.filter((selectedItem) => selectedItem !== item);
       newSelected = newSelected.filter(

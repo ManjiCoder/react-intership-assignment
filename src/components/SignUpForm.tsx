@@ -26,7 +26,6 @@ export default function SignUpForm() {
       email: data.get("email"),
       phoneNumber: data.get("phoneNumber"),
     };
-    console.log(userInfo);
     navigate("/");
 
     localStorage.setItem("user", JSON.stringify(userInfo));
